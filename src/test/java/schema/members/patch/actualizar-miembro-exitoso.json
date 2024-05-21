@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "msg": {
+      "type": "string"
+    },
+    "member": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "gender"
+      ]
+    }
+  },
+  "required": [
+    "msg",
+    "member"
+  ]
+}

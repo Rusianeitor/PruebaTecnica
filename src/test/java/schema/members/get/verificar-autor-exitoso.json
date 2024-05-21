@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "age": {
+      "type": "integer"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "books": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "bid": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "pages": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "bid",
+            "name",
+            "pages"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "bid": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "pages": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "bid",
+            "name",
+            "pages"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "age",
+    "gender",
+    "books"
+  ]
+}
