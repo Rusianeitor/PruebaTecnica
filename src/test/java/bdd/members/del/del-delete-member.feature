@@ -8,9 +8,10 @@ Feature: Eliminar miembro
     #Definir Utils
     * def schemaUtils = Java.type('util.SchemaUtils')
     * configure charset = null
+    * call read("../post/post-create-member_snippets.feature@Crear")
 
-  Scenario Outline: Verificar eliminacion de miembro con id valido
-    * def memberId = <id>
+  Scenario: Verificar eliminacion de miembro con id valido
+    * def memberId = idManipular
     * url baseURL + constants.PATH_MEMBERS + memberId
     Given headers header
     * header Authorization = call read('classpath:authorization/basic-auth.js') { username: 'admin', password: 'admin' }
@@ -21,12 +22,8 @@ Feature: Eliminar miembro
     * print 'headers:', karate.prevRequest.headers
     * print 'response:', response
 
-    Examples:
-      | id |
-      | 20 |
-
   Scenario Outline: Verificar eliminacion de miembro con id que no existe
-    * def memberId = <id>
+    * def memberId = idManipular
     * url baseURL + constants.PATH_MEMBERS + memberId
     Given headers header
     * header Authorization = call read('classpath:authorization/basic-auth.js') { username: 'admin', password: 'admin' }
@@ -92,8 +89,8 @@ Feature: Eliminar miembro
       | $A |
       | A~ |
 
-  Scenario Outline: Verificar eliminacion de miembro sin header Accept
-    * def memberId = <id>
+  Scenario: Verificar eliminacion de miembro sin header Accept
+    * def memberId = idManipular
     * url baseURL + constants.PATH_MEMBERS + memberId
     * remove header.Accept
     Given headers header
@@ -105,12 +102,8 @@ Feature: Eliminar miembro
     * print 'headers:', karate.prevRequest.headers
     * print 'response:', response
 
-    Examples:
-      | id |
-      | 19 |
-
-  Scenario Outline: Verificar eliminacion de miembro sin header Content-Type
-    * def memberId = <id>
+  Scenario: Verificar eliminacion de miembro sin header Content-Type
+    * def memberId = idManipular
     * url baseURL + constants.PATH_MEMBERS + memberId
     * remove header.Content-Type
     Given headers header
@@ -122,12 +115,8 @@ Feature: Eliminar miembro
     * print 'headers:', karate.prevRequest.headers
     * print 'response:', response
 
-    Examples:
-      | id |
-      | 18 |
-
-  Scenario Outline: Verificar eliminacion de miembro sin header Authorization
-    * def memberId = <id>
+  Scenario: Verificar eliminacion de miembro sin header Authorization
+    * def memberId = idManipular
     * url baseURL + constants.PATH_MEMBERS + memberId
     Given headers header
     When method delete
@@ -140,12 +129,8 @@ Feature: Eliminar miembro
     * print 'headers:', karate.prevRequest.headers
     * print 'response:', response
 
-    Examples:
-      | id |
-      | 17 |
-
-  Scenario Outline: Verificar eliminacion de miembro con header Accept vacio
-    * def memberId = <id>
+  Scenario: Verificar eliminacion de miembro con header Accept vacio
+    * def memberId = idManipular
     * url baseURL + constants.PATH_MEMBERS + memberId
     * set header.Accept = ''
     Given headers header
@@ -157,12 +142,8 @@ Feature: Eliminar miembro
     * print 'headers:', karate.prevRequest.headers
     * print 'response:', response
 
-    Examples:
-      | id |
-      | 17 |
-
-  Scenario Outline: Verificar eliminacion de miembro con header Accept con caracteres especiales
-    * def memberId = <id>
+  Scenario: Verificar eliminacion de miembro con header Accept con caracteres especiales
+    * def memberId = idManipular
     * url baseURL + constants.PATH_MEMBERS + memberId
     * set header.Accept = '#$'
     Given headers header
@@ -174,12 +155,8 @@ Feature: Eliminar miembro
     * print 'headers:', karate.prevRequest.headers
     * print 'response:', response
 
-    Examples:
-      | id |
-      | 17 |
-
-  Scenario Outline: Verificar eliminacion de miembro con header Content-Type vacio
-    * def memberId = <id>
+  Scenario: Verificar eliminacion de miembro con header Content-Type vacio
+    * def memberId = idManipular
     * url baseURL + constants.PATH_MEMBERS + memberId
     * set header.Content-Type = ''
     Given headers header
@@ -191,12 +168,8 @@ Feature: Eliminar miembro
     * print 'headers:', karate.prevRequest.headers
     * print 'response:', response
 
-    Examples:
-      | id |
-      | 16 |
-
-  Scenario Outline: Verificar eliminacion de miembro con header Content-Type con caracteres especiales
-    * def memberId = <id>
+  Scenario: Verificar eliminacion de miembro con header Content-Type con caracteres especiales
+    * def memberId = idManipular
     * url baseURL + constants.PATH_MEMBERS + memberId
     * set header.Content-Type = '#$'
     Given headers header
@@ -207,7 +180,3 @@ Feature: Eliminar miembro
     * print 'url:', karate.prevRequest.url
     * print 'headers:', karate.prevRequest.headers
     * print 'response:', response
-
-    Examples:
-      | id |
-      | 15 |

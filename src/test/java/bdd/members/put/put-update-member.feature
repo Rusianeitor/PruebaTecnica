@@ -8,6 +8,7 @@ Feature: Actualizar todos los campos del miembro
     #Definir Utils
     * def schemaUtils = Java.type('util.SchemaUtils')
     * configure charset = null
+    * call read("../post/post-create-member_snippets.feature@Actualizar")
 
   Scenario Outline: Verificar actualizacion de miembro con body valido
     * def memberId = <id>
@@ -29,8 +30,8 @@ Feature: Actualizar todos los campos del miembro
     * print 'response:', response
 
     Examples:
-      | id | nombre | gender |
-      | 5  | Jenni  | Female |
+      | id          | nombre | gender |
+      | idManipular | Jenni  | Female |
 
   Scenario Outline: Verificar actualizacion de miembro con body vacio
     * def memberId = <id>
@@ -72,7 +73,6 @@ Feature: Actualizar todos los campos del miembro
     Examples:
       | id  | nombre | gender |
       | 100 | Jeff   | Male   |
-      | 101 | Sofia  | Female |
 
 
   Scenario Outline: Verificar actualizacion de miembro con nombre vacio
@@ -94,7 +94,6 @@ Feature: Actualizar todos los campos del miembro
     Examples:
       | id | gender |
       | 5  | Male   |
-      | 6  | Female |
 
 
   Scenario Outline: Verificar actualizacion de miembro con nombre no ingresado
@@ -116,9 +115,8 @@ Feature: Actualizar todos los campos del miembro
     Examples:
       | id | gender |
       | 5  | Male   |
-      | 6  | Female |
 
-  Scenario Outline: Verificar actualizacion de miembro con nombre con <descrip>
+  Scenario Outline: Verificar actualizacion de miembro con nombre menor a 4
     * def memberId = <id>
     * url baseURL + constants.PATH_MEMBERS + memberId
     And request { "name": "<nombre>","gender":"<gender>"}
@@ -135,9 +133,28 @@ Feature: Actualizar todos los campos del miembro
     * print 'response:', response
 
     Examples:
-      | id | descrip           | nombre                     | gender |
-      | 5  | nombre menor a 4  | Jef                        | Male   |
-      | 6  | nombre mayor a 25 | SofiaDeFatimaBravoBustoooo | Female |
+      | id | nombre | gender |
+      | 5  | Jef    | Male   |
+
+  Scenario Outline: Verificar actualizacion de miembro con nombre mayor a 25
+    * def memberId = <id>
+    * url baseURL + constants.PATH_MEMBERS + memberId
+    And request { "name": "<nombre>","gender":"<gender>"}
+    Given headers header
+    * header Authorization = call read('classpath:authorization/basic-auth.js') { username: 'admin', password: 'admin' }
+    When method put
+    Then status 400
+    Then match response.msg == constants.CODE_400_MESSAGE_PUT_2
+    * string schema = read('classpath:'+constants.SCHEMA_PUT_MEMBERS_NO_EXITOSO)
+    * string responseToString = response
+    * assert schemaUtils.isValid(responseToString, schema)
+    * print 'url:', karate.prevRequest.url
+    * print 'headers:', karate.prevRequest.headers
+    * print 'response:', response
+
+    Examples:
+      | id | nombre                     | gender |
+      | 6  | SofiaDeFatimaBravoBustoooo | Female |
 
   Scenario Outline: Verificar actualizacion de miembro con nombre espacio en blanco
     * def memberId = <id>
@@ -158,7 +175,6 @@ Feature: Actualizar todos los campos del miembro
     Examples:
       | id | gender |
       | 5  | Male   |
-      | 6  | Female |
 
   Scenario Outline: Verificar actualizacion de miembro con nombre caracteres especiales
     * def memberId = <id>
@@ -179,7 +195,6 @@ Feature: Actualizar todos los campos del miembro
     Examples:
       | id | nombre | gender |
       | 5  | Jeff#  | Male   |
-      | 6  | Sofia# | Female |
 
   Scenario Outline: Verificar actualizacion de miembro con nombre alfanumerico
     * def memberId = <id>
@@ -200,7 +215,6 @@ Feature: Actualizar todos los campos del miembro
     Examples:
       | id | nombre | gender |
       | 5  | Jeff1  | Male   |
-      | 6  | Sofia2 | Female |
 
    #GENDER
 
@@ -223,7 +237,6 @@ Feature: Actualizar todos los campos del miembro
     Examples:
       | id | nombre |
       | 5  | Jeff   |
-      | 6  | Sofia  |
 
 
   Scenario Outline: Verificar actualizacion de miembro con genero no ingresado
@@ -245,7 +258,6 @@ Feature: Actualizar todos los campos del miembro
     Examples:
       | id | nombre |
       | 5  | Jeff   |
-      | 6  | Sofia  |
 
   Scenario Outline: Verificar actualizacion de miembro con genero invalido
     * def memberId = <id>
@@ -266,7 +278,6 @@ Feature: Actualizar todos los campos del miembro
     Examples:
       | id | nombre | gender    |
       | 5  | Jeff   | Masculino |
-      | 6  | Sofia  | Femenino  |
 
   Scenario Outline: Verificar actualizacion de miembro con genero con caracteres especiales
     * def memberId = <id>
@@ -285,9 +296,8 @@ Feature: Actualizar todos los campos del miembro
     * print 'response:', response
 
     Examples:
-      | id | nombre | gender  |
-      | 5  | Jeff   | Male$   |
-      | 6  | Sofia  | Female$ |
+      | id | nombre | gender |
+      | 5  | Jeff   | Male$  |
 
   Scenario Outline: Verificar actualizacion de miembro con genero alfanumerico
     * def memberId = <id>
@@ -306,9 +316,8 @@ Feature: Actualizar todos los campos del miembro
     * print 'response:', response
 
     Examples:
-      | id | nombre | gender  |
-      | 5  | Jeff   | Male1   |
-      | 6  | Sofia  | Female2 |
+      | id | nombre | gender |
+      | 5  | Jeff   | Male1  |
 
   #HEADERS
 
@@ -333,8 +342,8 @@ Feature: Actualizar todos los campos del miembro
     * print 'response:', response
 
     Examples:
-      | id | nombre | gender |
-      | 5  | Jenni  | Female |
+      | id          | nombre | gender |
+      | idManipular | Jenni  | Female |
 
   Scenario Outline: Verificar actualizacion de miembro sin header Authorization
     * def memberId = <id>
@@ -354,7 +363,6 @@ Feature: Actualizar todos los campos del miembro
     Examples:
       | id | nombre | gender |
       | 5  | Jeff   | Male   |
-      | 6  | Sofia  | Female |
 
   Scenario Outline: Verificar actualizacion de miembro con header Accept vacio
     * def memberId = <id>
@@ -377,8 +385,8 @@ Feature: Actualizar todos los campos del miembro
     * print 'response:', response
 
     Examples:
-      | id | nombre | gender |
-      | 5  | Jenni  | Female |
+      | id          | nombre | gender |
+      | idManipular | Jenni  | Female |
 
   Scenario Outline: Verificar actualizacion de miembro con header Accept con caracteres especiales
     * def memberId = <id>

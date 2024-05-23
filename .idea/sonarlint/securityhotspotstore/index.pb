@@ -1,12 +1,6 @@
 
 S
 #src/main/java/org/example/Main.java,0\b\0ba1b9c7a4878802f938e331cc2d8a042087ec6b
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-?
-settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
-7
-gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
 N
 src/test/java/logback-test.xml,0\b\0b0365a0d5b2558321a5da0f2bc253bb92d1c8ad
 N
@@ -65,6 +59,10 @@ j
 :src/test/java/schema/files/post/cargar-imagen-exitoso.json,b\2\b26cf06b438b6098e831f5c51dc9fd71e66e70a7
 p
 @src/test/java/schema/files/post/cargar-imagen-no-autorizado.json,0\5\0562a6fc8e2cd36450d6d38044700daece62923d
+C
+DemoApiChoucair.iml,9\8\9882d4813e06a80f750923899d426c83a3b5b90a
+r
+Bsrc/test/java/bdd/members/post/post-create-member_snippets.feature,0\2\02f7f3aae094f4731433ca267b5f02bcd2a4b010
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
