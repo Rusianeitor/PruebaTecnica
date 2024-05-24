@@ -8,6 +8,7 @@ Feature: Obtener un solo autor
     #Definir Utils
     * def schemaUtils = Java.type('util.SchemaUtils')
 
+  @ObtenerAutor
   Scenario Outline: Verificar autor con id valido
     * def authorId = <id>
     * url baseURL + constants.PATH_AUTHOR + authorId

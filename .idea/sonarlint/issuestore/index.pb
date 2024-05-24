@@ -59,10 +59,18 @@ j
 :src/test/java/schema/files/post/cargar-imagen-exitoso.json,b\2\b26cf06b438b6098e831f5c51dc9fd71e66e70a7
 p
 @src/test/java/schema/files/post/cargar-imagen-no-autorizado.json,0\5\0562a6fc8e2cd36450d6d38044700daece62923d
-C
-DemoApiChoucair.iml,9\8\9882d4813e06a80f750923899d426c83a3b5b90a
 r
 Bsrc/test/java/bdd/members/post/post-create-member_snippets.feature,0\2\02f7f3aae094f4731433ca267b5f02bcd2a4b010
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+K
+.github/workflows/build.yml,f\e\fe77d5d1439f26e353a42bbd38dece2467ff6558
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+?
+settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
+Q
+!src/test/java/bdd/TestRunner.java,1\2\1234d96c818c7e8cfccbdb6f0b9af97bb993c9dd
+S
+#src/test/java/util/ReportsUtil.java,5\1\5117066c6b3e0127764c610ea4670480fec96d4f
