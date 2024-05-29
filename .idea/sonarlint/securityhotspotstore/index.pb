@@ -12,8 +12,6 @@ k
 ;src/test/java/stepdefinitions/AnadirCarritoDefinitions.java,3\e\3e575ef854c88f20e4cba26512ac9bdc54768fa8
 R
 "src/test/java/pages/ExitoPage.java,a\6\a69644f112c3a6c38e6eae3ef351ef19ca14fc05
-R
-"src/test/java/pages/AudioPage.java,3\f\3fd20c573d8fa304f1426b577f9b8cbd194a000f
 U
 %src/test/java/pages/DespensaPage.java,b\f\bf0f68fc24ec8bbc48ff51a7a252b9907d500943
 S
@@ -22,3 +20,5 @@ T
 $src/test/java/pages/CarritoPage.java,9\2\929b3d4a1f3d9e89a33870b286697b934c63488d
 M
 src/test/java/util/Datos.java,b\e\beac7ef71d66868d08a82b95ec3a9f6c12da060d
+?
+settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233

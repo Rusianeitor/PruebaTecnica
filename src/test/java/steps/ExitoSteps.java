@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import static java.time.temporal.ChronoUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -50,12 +51,13 @@ public class ExitoSteps {
     @Step("Usuario ingresa a la web Exito")
     public void abrirPagina() throws InterruptedException {
         exitoPage.open();
-        //Thread.sleep(3000);
+        exitoPage.setImplicitTimeout(10, SECONDS);
+        despensaPage.setImplicitTimeout(60, SECONDS);
+        carritoPage.setImplicitTimeout(60, SECONDS);
     }
 
-    @Step("Usuario hace clic en el menu")
     public void abrirMenu() throws InterruptedException {
-        exitoPage.btnMenu.waitUntilClickable().click();
+        exitoPage.btnMenu.click();
     }
 
     @Step("Usuario selecciona categoria Tec")
@@ -73,8 +75,8 @@ public class ExitoSteps {
     @Step("Usuario selecciona 5 productos en despensa")
     public void seleccionProductosDespensa() throws InterruptedException {
         Random rand = new Random();
-        Thread.sleep(5000);
-        despensaPage.botonAgregar.waitUntilClickable();
+        //Thread.sleep(5000);
+        despensaPage.botonAgregar.waitUntilVisible();
         int randomNumber1 = rand.nextInt(2);
         int randomNumber2 = rand.nextInt(2) + 2;
         int randomNumber3 = rand.nextInt(2) + 4;
@@ -143,12 +145,13 @@ public class ExitoSteps {
 
     public void visualizarCarrito() throws InterruptedException {
         despensaPage.carrito.waitUntilVisible().waitUntilClickable().click();
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
         carritoPage.unidad.waitUntilPresent();
     }
 
     public void calcularDatosCarrito() throws InterruptedException {
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
+        carritoPage.titulos.get(0).waitUntilVisible();
         for (short i = 0; i < 5; i++) {
             carritoTitulos.add(carritoPage.titulos.get(i).getText());
             carritoPrecios.add(carritoPage.precios.get(i).getText());
