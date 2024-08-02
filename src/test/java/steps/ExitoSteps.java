@@ -180,7 +180,7 @@ public class ExitoSteps {
         return lista1.equals(lista2);
     }
 
-    public void validaciones() {
+    public void validaciones() throws InterruptedException{
         //COMPARAR QUE El NOMBRE DE LOS PRODUCTOS AGREGADOS ES IGUAL AL DEL CARRITO
         boolean sonIguales = listasIguales(tempTitulos, carritoTitulos);
         assertThat(sonIguales, is(true));
