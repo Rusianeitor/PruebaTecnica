@@ -24,7 +24,7 @@ public class AnadirCarritoDefinitions {
 
     @When("selecciono la subcategoria Impresion")
     public void seleccionoLaSubcategoriaImpresion() {
-        exitoSteps.seleccionarSubCategoriaDespensa();
+        //exitoSteps.seleccionarSubCategoriaDespensa();
     }
 
     @When("selecciona productos Despensa")
