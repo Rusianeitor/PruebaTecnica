@@ -1,10 +1,3 @@
-defaultTasks 'clean', 'test', 'aggregate'
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
 buildscript {
     repositories {
         maven {
@@ -16,11 +9,25 @@ buildscript {
     }
 }
 
+plugins {
+    id "org.sonarqube" version "5.0.0.4638"
+    id "net.serenity-bdd.serenity-gradle-plugin" version "4.1.14"
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+}
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
+sonar {
+    properties {
+        property "sonar.projectKey", "Prueba"
+        property "sonar.host.url", "http://localhost:9000/"
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
 
 sourceCompatibility = 16
 targetCompatibility = 16
@@ -59,5 +66,7 @@ test {
 }
 
 gradle.startParameter.continueOnFailure = true
+defaultTasks 'clean', 'test', 'aggregate'
+
 
 test.finalizedBy(aggregate)
